@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="An ethical black-box playbook for characterizing LLM behavior through controlled experiments.">
+    <meta name="theme-color" content="#090b0b">
+    <title>LLM Reverse Engineering Lab</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Blackbox Lab home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>BLACKBOX<span class="brand-dot">/</span>LAB</span>
+        </a>
+        <nav aria-label="Primary navigation">
+          <a href="#principles">Principles</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#workbench">Experiments</a>
+          <a href="#playbook">Playbook</a>
+        </nav>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme">
+          <span id="themeIcon" aria-hidden="true">☼</span>
+          <span class="theme-label" id="themeLabel">LIGHT</span>
+        </button>
+      </header>
+
+      <noscript>
+        <div class="scope-strip">
+          <div class="scope-icon" aria-hidden="true">!</div>
+          <div><strong>JAVASCRIPT REQUIRED</strong><p>Enable JavaScript to use the experiment tabs, copy buttons, theme selector, and progress checklist.</p></div>
+        </div>
+      </noscript>
+
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="status-dot"></span>BLACK-BOX RESEARCH PLAYBOOK</div>
+          <h1>Map the behavior.<span>Not the weights.</span></h1>
+          <p class="hero-lede">A practical, ethical method for characterizing an LLM through controlled prompts, repeated measurements, and evidence-based inference.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#workflow">Start the workflow <span aria-hidden="true">↘</span></a>
+            <button class="button button-secondary" id="copyBrief" type="button">
+              <span class="copy-icon" aria-hidden="true"></span>
+              <span class="copy-label">Copy research brief</span>
+            </button>
+          </div>
+          <div class="hero-meta" aria-label="Guide characteristics">
+            <span><b>05</b> research phases</span>
+            <span><b>05</b> probe families</span>
+            <span><b>100%</b> black-box</span>
+          </div>
+        </div>
+
+        <div class="probe-card" aria-label="Animated black-box probe visualization">
+          <div class="probe-topbar"><span>PROBE_014</span><span class="live-label"><i></i> LIVE TRACE</span></div>
+          <div class="model-visual" aria-hidden="true">
+            <div class="orbit orbit-one"><span></span></div>
+            <div class="orbit orbit-two"><span></span></div>
+            <div class="orbit orbit-three"><span></span></div>
+            <div class="model-core"><small>MODEL</small><strong>?</strong><em>BLACK BOX</em></div>
+            <span class="node node-a">P₁</span>
+            <span class="node node-b">O₁</span>
+            <span class="node node-c">P₂</span>
+          </div>
+          <div class="trace-log" aria-hidden="true">
+            <div><span>00:00.182</span><b>prompt.accepted</b><em>200</em></div>
+            <div><span>00:00.594</span><b>tokens.generated</b><em>148</em></div>
+            <div><span>00:00.731</span><b>signature.logged</b><em>✓</em></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scope-strip" id="principles">
+        <div class="scope-icon" aria-hidden="true">!</div>
+        <div>
+          <strong>AUTHORIZED RESEARCH ONLY</strong>
+          <p>Test models you own or are permitted to evaluate. Respect licensing, privacy, rate limits, and provider terms.</p>
+        </div>
+        <div class="scope-boundary"><span>IN SCOPE</span>Behavior · reliability · safety · performance</div>
+      </section>
+
+      <section class="workflow section-shell" id="workflow">
+        <div class="section-heading">
+          <div><span class="section-index">01 / METHOD</span><h2>A disciplined inference loop</h2></div>
+          <p>Reverse engineering here means building a testable behavioral model—not reconstructing proprietary code, data, or parameters.</p>
+        </div>
+        <div class="step-grid">
+          <article class="step-card">
+            <div class="step-head"><span>01</span><small>QUESTION</small></div>
+            <div class="step-line"><i></i><b></b></div>
+            <h3>Frame a hypothesis</h3>
+            <p>Convert curiosity into a falsifiable claim about one observable behavior.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-head"><span>02</span><small>CONTROL</small></div>
+            <div class="step-line"><i></i><b></b></div>
+            <h3>Design a controlled probe</h3>
+            <p>Vary one factor at a time while fixing model, prompt shape, and parameters.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-head"><span>03</span><small>EVIDENCE</small></div>
+            <div class="step-line"><i></i><b></b></div>
+            <h3>Collect repeated trials</h3>
+            <p>Capture outputs, token counts, timing, errors, refusals, and run metadata.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-head"><span>04</span><small>ANALYSIS</small></div>
+            <div class="step-line"><i></i><b></b></div>
+            <h3>Compare signatures</h3>
+            <p>Look for stable patterns, boundaries, discontinuities, and competing causes.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-head"><span>05</span><small>RESULT</small></div>
+            <div class="step-line"><i></i></div>
+            <h3>Report with confidence</h3>
+            <p>Separate observations from inference and document uncertainty explicitly.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="workbench section-shell" id="workbench">
+        <div class="section-heading workbench-heading">
+          <div><span class="section-index">02 / EXPERIMENTS</span><h2>Probe one dimension at a time</h2></div>
+          <p>Choose a probe family. Each card gives you a hypothesis, controlled method, evidence signal, caveat, and copyable starter script.</p>
+        </div>
+
+        <div class="probe-tabs" id="probeTabs" role="tablist" aria-label="LLM probe families"></div>
+
+        <div class="probe-panel" id="probePanel" role="tabpanel" aria-live="polite">
+          <div class="probe-notes">
+            <span class="probe-kicker" id="probeKicker"></span>
+            <h3 id="probeTitle"></h3>
+            <p class="probe-summary" id="probeSummary"></p>
+            <div class="hypothesis-box"><span>HYPOTHESIS</span><p id="hypothesisText"></p></div>
+            <div class="method-list">
+              <span>METHOD</span>
+              <ol id="methodList"></ol>
+            </div>
+            <div class="signal-grid">
+              <div><span>LOOK FOR</span><p id="signalText"></p></div>
+              <div><span>CAUTION</span><p id="caveatText"></p></div>
+            </div>
+          </div>
+          <div class="code-card">
+            <div class="code-topbar">
+              <span><i></i><i></i><i></i> <span id="codeFilename"></span></span>
+              <button id="copyCode" type="button">
+                <span class="copy-icon" aria-hidden="true"></span>
+                <span class="copy-label">COPY CODE</span>
+              </button>
+            </div>
+            <pre><code id="probeCode"></code></pre>
+            <div class="code-foot"><span>PYTHON / PSEUDOCODE</span><span>AUTHORIZED ENDPOINT REQUIRED</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="evidence-section section-shell">
+        <div class="section-heading compact-heading">
+          <div><span class="section-index">03 / EVIDENCE</span><h2>Inference is not extraction</h2></div>
+          <p>A reliable assessment ties every conclusion to an observable signal and states how strongly the data supports it.</p>
+        </div>
+
+        <div class="limits-grid">
+          <article class="limit-card can-card">
+            <div class="limit-title"><span>✓</span><div><small>DEFENSIBLE</small><h3>What you can estimate</h3></div></div>
+            <ul>
+              <li><b>Effective input boundary</b><span>Using accepted size, recall, and error behavior.</span></li>
+              <li><b>Relative randomness</b><span>Using repeated trials under fixed parameters.</span></li>
+              <li><b>Tokenizer tendencies</b><span>When documented token usage is available.</span></li>
+              <li><b>Instruction behavior</b><span>Across harmless roles, formats, and history.</span></li>
+              <li><b>Service reliability</b><span>Latency, errors, tool calls, and consistency.</span></li>
+            </ul>
+          </article>
+          <article class="limit-card cannot-card">
+            <div class="limit-title"><span>×</span><div><small>NOT RELIABLY RECOVERABLE</small><h3>What remains unknowable</h3></div></div>
+            <ul>
+              <li><b>Exact model weights</b><span>Outputs do not uniquely determine billions of parameters.</span></li>
+              <li><b>Private training corpus</b><span>Similar text is not proof of membership or provenance.</span></li>
+              <li><b>Hidden instructions</b><span>Behavioral clues do not establish exact prompt text.</span></li>
+              <li><b>Internal architecture</b><span>Several implementations can create the same signature.</span></li>
+              <li><b>Model versus wrapper</b><span>Routing, retrieval, policy, and templates can look like model traits.</span></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="evidence-table-wrap">
+          <div class="table-label"><span>OBSERVATION → INFERENCE MAP</span><em>Confidence is evidence-dependent</em></div>
+          <table>
+            <thead><tr><th>Target</th><th>Direct observation</th><th>Permissible inference</th><th>Typical confidence</th></tr></thead>
+            <tbody>
+              <tr><td>Tokenizer behavior</td><td>Usage counts across paired strings</td><td>Segmentation tendencies or likely family</td><td><span class="confidence confidence-medium">Medium</span></td></tr>
+              <tr><td>Effective context</td><td>Accepted size + landmark recall</td><td>Practical service boundary</td><td><span class="confidence confidence-high">High</span></td></tr>
+              <tr><td>Decoding</td><td>Variation across repeated controlled trials</td><td>Relative stochastic behavior</td><td><span class="confidence confidence-medium">Medium</span></td></tr>
+              <tr><td>Instruction handling</td><td>Benign role and format conflicts</td><td>Service-level priority behavior</td><td><span class="confidence confidence-medium">Medium</span></td></tr>
+              <tr><td>Tool orchestration</td><td>Call selection and argument validity</td><td>Reliability of the end-to-end tool stack</td><td><span class="confidence confidence-high">High</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="playbook section-shell" id="playbook">
+        <div class="section-heading compact-heading">
+          <div><span class="section-index">04 / PLAYBOOK</span><h2>Leave an auditable trail</h2></div>
+          <p>Use this report structure and readiness check before drawing conclusions from your model experiments.</p>
+        </div>
+
+        <div class="playbook-grid">
+          <article class="template-card">
+            <div class="template-topbar">
+              <div><span>REPORT_TEMPLATE.MD</span><small>MARKDOWN</small></div>
+              <button id="copyTemplate" type="button">
+                <span class="copy-icon" aria-hidden="true"></span>
+                <span class="copy-label">COPY TEMPLATE</span>
+              </button>
+            </div>
+            <pre><code id="reportTemplate"></code></pre>
+          </article>
+
+          <aside class="checklist-card">
+            <div class="checklist-head">
+              <div><span>RESEARCH READINESS</span><h3>Pre-flight checklist</h3></div>
+              <strong id="progressText">00%</strong>
+            </div>
+            <div class="progress-track" id="progressTrack" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Research readiness"><span id="progressBar"></span></div>
+            <div class="check-items" id="checkItems"></div>
+            <button class="reset-checklist" id="resetChecklist" type="button" disabled>RESET CHECKLIST</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="confidence-strip section-shell">
+        <div><span class="section-index">CONFIDENCE RUBRIC</span><h2>Calibrate the claim to the evidence.</h2></div>
+        <div class="rubric-grid">
+          <article><span class="confidence confidence-low">Low</span><p>One pattern, few trials, or several plausible alternative causes.</p></article>
+          <article><span class="confidence confidence-medium">Medium</span><p>Repeated pattern with controls, but service-layer explanations remain.</p></article>
+          <article><span class="confidence confidence-high">High</span><p>Repeatable boundary or behavior across controls, runs, and independent probes.</p></article>
+        </div>
+      </section>
+
+      <footer>
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>BLACKBOX<span class="brand-dot">/</span>LAB</span>
+        </a>
+        <p>Behavioral system identification for authorized, evidence-led LLM research.</p>
+        <a href="#top">BACK TO TOP ↑</a>
+      </footer>
+
+      <div class="toast" id="toast" role="status" aria-live="polite">Copied to clipboard</div>
+    </main>
+  </body>
+</html>
